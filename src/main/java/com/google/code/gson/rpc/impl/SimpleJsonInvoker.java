@@ -1,7 +1,5 @@
 package com.google.code.gson.rpc.impl;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -11,6 +9,7 @@ import java.net.URLConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.code.gson.rpc.Check;
 import com.google.code.gson.rpc.Default;
 import com.google.code.gson.rpc.JsonConverter;
 import com.google.code.gson.rpc.JsonInvoker;
@@ -33,13 +32,13 @@ public class SimpleJsonInvoker implements JsonInvoker {
 	}
 
 	public SimpleJsonInvoker(JsonConverter jonConverter) {
-		this.converter = checkNotNull(jonConverter, "jonConverter");
+		this.converter = Check.notNull(jonConverter, "jonConverter");
 	}
 
 	@Override
 	public Object invoke(URL url, Type returnType) throws IOException {
-		checkNotNull(url, "url");
-		checkNotNull(returnType, "returnType");
+		Check.notNull(url, "url");
+		Check.notNull(returnType, "returnType");
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("Invoke url -> " + url);
 		}
@@ -48,9 +47,9 @@ public class SimpleJsonInvoker implements JsonInvoker {
 
 	@Override
 	public Object invoke(URL url, Object object, Type returnType) throws IOException {
-		checkNotNull(url, "url");
-		checkNotNull(object, "object");
-		checkNotNull(returnType, "returnType");
+		Check.notNull(url, "url");
+		Check.notNull(object, "object");
+		Check.notNull(returnType, "returnType");
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("Invoke url -> " + url);
 		}
