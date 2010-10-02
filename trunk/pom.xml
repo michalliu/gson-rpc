@@ -22,6 +22,7 @@
 		</license>
 	</licenses>
 	<dependencies>
+		<!-- required  -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -32,6 +33,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4jVersion}</version>
 		</dependency>
+		<!-- optional -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -50,7 +52,7 @@
 			<version>${springVersion}</version>
 			<optional>true</optional>
 		</dependency>
-		
+		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
