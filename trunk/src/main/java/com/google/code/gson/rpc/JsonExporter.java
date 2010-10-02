@@ -1,6 +1,5 @@
 package com.google.code.gson.rpc;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Strings;
 
 /**
  * 
@@ -79,7 +76,8 @@ public abstract class JsonExporter extends HttpServlet {
 				break;
 			}
 		}
-		return checkNotNull(method, "Method '" + methodName + "' not found for " + service.getClass().getName());
+		return Check.notNull(method, 
+				"Method '" + methodName + "' not found for " + service.getClass().getName());
 	}
 
 	private String getMethodName(HttpServletRequest request) {
@@ -97,7 +95,7 @@ public abstract class JsonExporter extends HttpServlet {
 	}
 
 	private void respond(HttpServletResponse response, String body) throws IOException {
-		if (Strings.isNullOrEmpty(body)) {
+		if (Check.isBlank(body)) {
 			return;
 		}
 		if (LOGGER.isInfoEnabled()) {

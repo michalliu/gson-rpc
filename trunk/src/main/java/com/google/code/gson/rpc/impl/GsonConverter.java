@@ -1,11 +1,9 @@
 package com.google.code.gson.rpc.impl;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import java.lang.reflect.Type;
 
+import com.google.code.gson.rpc.Check;
 import com.google.code.gson.rpc.JsonConverter;
-import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -23,7 +21,7 @@ public class GsonConverter implements JsonConverter {
 	}
 
 	public GsonConverter(Gson gson) {
-		this.gson = checkNotNull(gson, "gson");
+		this.gson = Check.notNull(gson, "gson");
 	}
 	
 	@Override
@@ -38,11 +36,11 @@ public class GsonConverter implements JsonConverter {
 	
 	@Override
 	public String toJson(Throwable throwable) {
-		checkNotNull(throwable, "throwable");
+		Check.notNull(throwable, "throwable");
 		JsonObject error = new JsonObject();
 		error.addProperty("type", throwable.getClass().getName());
 		String message = throwable.getMessage();
-		if (Strings.isNullOrEmpty(message)) {
+		if (Check.isNotBlank(message)) {
 			error.addProperty("message", message);
 		}
 		return error.toString();

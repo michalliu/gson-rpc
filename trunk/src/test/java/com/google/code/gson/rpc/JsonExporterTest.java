@@ -16,7 +16,6 @@ import org.mortbay.jetty.Server;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 import org.mortbay.jetty.webapp.WebAppContext;
 
-import com.google.common.base.Strings;
 import com.google.gson.JsonPrimitive;
 
 /**
@@ -53,7 +52,7 @@ public class JsonExporterTest {
 
 		Streams.write(Student.JSON, connection.getOutputStream());
 		String response = Streams.read(connection.getInputStream());
-		assertTrue(Strings.isNullOrEmpty(response));
+		assertTrue(Check.isBlank(response));
 	}
 
 	@Before
