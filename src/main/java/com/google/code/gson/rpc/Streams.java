@@ -8,9 +8,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.charset.Charset;
-
-import com.google.common.base.Charsets;
 
 /**
  * 
@@ -18,8 +15,6 @@ import com.google.common.base.Charsets;
  * 
  */
 public class Streams {
-
-	private static final Charset CHARSET = Charsets.UTF_8;
 
 	private Streams() {
 
@@ -33,7 +28,7 @@ public class Streams {
 	 * @throws IOException
 	 */
 	public static String read(InputStream inputStream) throws IOException {
-		return new String(toByteArray(inputStream), CHARSET);
+		return new String(toByteArray(inputStream), Default.CHARSET);
 	}
 
 	/**
@@ -45,6 +40,6 @@ public class Streams {
 	 */
 	public static void write(Object content, OutputStream outputStream) throws IOException {
 		checkNotNull(content, "content");
-		copy(new ByteArrayInputStream(content.toString().getBytes(CHARSET)), outputStream);
+		copy(new ByteArrayInputStream(content.toString().getBytes(Default.CHARSET)), outputStream);
 	}
 }
