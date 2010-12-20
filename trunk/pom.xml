@@ -78,6 +78,13 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>  
+     		<id>GoogleCodeGsonRPC</id>  
+     		<name>Gson RPC At Coogle Code Repository</name>  
+     		<url>https://gson-rpc.googlecode.com/svn/trunk/deploy</url>  
+   		</repository>  
+ 	</distributionManagement>  
 	<build>
 		<plugins>
 			<plugin>
