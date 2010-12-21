@@ -110,6 +110,7 @@ public abstract class JsonExporter extends HttpServlet {
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("Response body -> " + body);
 		}
+		response.setContentType("text/x-json; charset=" +Default.CHARSET.name());
 		Streams.write(body, response.getOutputStream());
 	}
 
