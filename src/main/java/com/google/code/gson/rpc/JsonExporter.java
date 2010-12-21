@@ -1,6 +1,5 @@
 package com.google.code.gson.rpc;
 
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -30,8 +29,13 @@ public abstract class JsonExporter extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String responseContent = handleRequest(request);
-		respond(response, responseContent);
+		ServletInvocationContext.set(request, response);
+		try {
+			String responseContent = handleRequest(request);
+			respond(response, responseContent);
+		} finally {
+			ServletInvocationContext.clear();
+		}
 	}
 
 	private String handleRequest(HttpServletRequest request) {
