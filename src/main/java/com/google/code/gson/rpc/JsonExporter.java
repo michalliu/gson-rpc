@@ -86,12 +86,17 @@ public abstract class JsonExporter extends HttpServlet {
 
 	private String getMethodName(HttpServletRequest request) {
 		String requestURI = request.getRequestURI();
-		return requestURI.substring(requestURI.indexOf(".") + 1);
+		return requestURI.substring(requestURI.lastIndexOf(".") + 1);
 	}
 
 	private String getServiceName(HttpServletRequest request) {
 		String requestURI = request.getRequestURI();
-		return requestURI.substring(0, requestURI.indexOf("."));
+		int lastIndexOfSlash = requestURI.lastIndexOf("/");
+		int beginIndex = 0;
+		if (lastIndexOfSlash != -1) {
+			beginIndex = lastIndexOfSlash + 1;	
+		}
+		return requestURI.substring(beginIndex, requestURI.lastIndexOf("."));
 	}
 
 	private boolean noArguments(Method method) {
