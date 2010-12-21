@@ -1,6 +1,9 @@
 package com.google.code.gson.rpc;
 
+import static com.google.code.gson.rpc.ServletInvocationContext.currentRequest;
+import static com.google.code.gson.rpc.ServletInvocationContext.currentResponse;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -20,6 +23,8 @@ public class MockStudentService {
 
 	@Override
 	public String toString() {
+		assertNotNull(currentRequest());
+		assertNotNull(currentResponse());
 		return "Mock";
 	}
 
