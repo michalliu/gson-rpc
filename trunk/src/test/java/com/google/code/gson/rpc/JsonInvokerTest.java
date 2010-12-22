@@ -13,8 +13,6 @@ import org.mortbay.jetty.Server;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 import org.mortbay.jetty.webapp.WebAppContext;
 
-import com.google.code.gson.rpc.impl.SimpleJsonInvoker;
-
 /**
  * 
  * @author wangzijian
