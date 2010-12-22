@@ -2,8 +2,6 @@ package com.google.code.gson.rpc;
 
 import java.nio.charset.Charset;
 
-import com.google.code.gson.rpc.impl.GsonConverter;
-
 /**
  * 
  * @author wangzijian
