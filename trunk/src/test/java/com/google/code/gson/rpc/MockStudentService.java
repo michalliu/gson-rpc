@@ -36,5 +36,9 @@ public class MockStudentService {
 	public void delete(Student student) {
 		assertThat(student, is(expectedStudent));
 	}
+	
+	public void addBook(String bookNameA, String bookNameB) {
+		throw new UnsupportedOperationException();
+	}
 
 }

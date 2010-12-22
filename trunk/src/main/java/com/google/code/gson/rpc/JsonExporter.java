@@ -53,7 +53,9 @@ public abstract class JsonExporter extends HttpServlet {
 	}
 
 	private Object processInvocation(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException, IOException {
-		Object service = named(getServiceName(request));
+		String serviceName = getServiceName(request);
+		Object service = named(serviceName);
+		Check.notNull(service, "Service not found by '" + serviceName + "'");
 		Method method = firstMethodOf(service, getMethodName(request));
 		if (noArguments(method)) {
 			return method.invoke(service);
@@ -62,9 +64,16 @@ public abstract class JsonExporter extends HttpServlet {
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("Request body -> " + requestContent);
 		}
-		Type type = method.getGenericParameterTypes()[0];
+		Type type = uniqueArgumentTypeOf(method);
 		Object argument = converter.fromJson(requestContent, type);
 		return method.invoke(service, argument);
+	}
+
+	private Type uniqueArgumentTypeOf(Method method) {
+		Type[] genericParameterTypes = method.getGenericParameterTypes();
+		Check.argument(genericParameterTypes.length == 1,
+				"Cannot determine the unqiue argument from " + method);
+		return genericParameterTypes[0];
 	}
 
 	private String toJsonError(Throwable throwable) {
@@ -96,7 +105,11 @@ public abstract class JsonExporter extends HttpServlet {
 		if (lastIndexOfSlash != -1) {
 			beginIndex = lastIndexOfSlash + 1;	
 		}
-		return requestURI.substring(beginIndex, requestURI.lastIndexOf("."));
+		int lastIndexOfDot = requestURI.lastIndexOf(".");
+		Check.argument(lastIndexOfDot != -1, 
+				"Cannot determine the invocation from request URI " + requestURI + 
+				", expected invocation pattern ../studentService.delete");
+		return requestURI.substring(beginIndex, lastIndexOfDot);
 	}
 
 	private boolean noArguments(Method method) {
