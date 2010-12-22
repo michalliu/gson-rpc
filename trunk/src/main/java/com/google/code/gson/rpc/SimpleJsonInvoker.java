@@ -1,4 +1,4 @@
-package com.google.code.gson.rpc.impl;
+package com.google.code.gson.rpc;
 
 import java.io.IOException;
 import java.io.InputStream;
