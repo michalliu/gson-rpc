@@ -7,11 +7,11 @@ import java.nio.charset.Charset;
  * @author wangzijian
  * 
  */
-public class Default {
+class Default {
 
-	public static final Charset CHARSET = Charset.forName("UTF-8");
+	static final Charset CHARSET = Charset.forName("UTF-8");
 	
-	public static final JsonConverter CONVERTER = new GsonConverter();
+	static final JsonConverter CONVERTER = new GsonConverter();
 
 	private Default() {
 

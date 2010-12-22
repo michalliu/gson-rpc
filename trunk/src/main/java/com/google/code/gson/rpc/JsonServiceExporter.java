@@ -87,8 +87,9 @@ public abstract class JsonServiceExporter extends HttpServlet {
 
 	private Type uniqueArgumentTypeOf(Method method) {
 		Type[] genericParameterTypes = method.getGenericParameterTypes();
-		Check.argument(genericParameterTypes.length == 1,
-				"Cannot determine the unqiue argument from " + method);
+		if (genericParameterTypes.length != 1) {
+			throw new IllegalArgumentException("Cannot determine the unqiue argument from " + method);
+		}
 		return genericParameterTypes[0];
 	}
 

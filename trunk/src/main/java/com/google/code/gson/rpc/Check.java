@@ -5,20 +5,20 @@ package com.google.code.gson.rpc;
  * @author wangzijian
  * 
  */
-public class Check {
+class Check {
 
 	private Check() {
 
 	}
 
-	public static <T> T notNull(T reference, Object errorMessage) {
+	static <T> T notNull(T reference, Object errorMessage) {
 		if (reference == null) {
 			throw new NullPointerException(String.valueOf(errorMessage));
 		}
 		return reference;
 	}
 
-	public static boolean isBlank(String string) {
+	static boolean isBlank(String string) {
 		int strLen;
 		if (string == null || (strLen = string.length()) == 0) {
 			return true;
@@ -31,14 +31,8 @@ public class Check {
 		return true;
 	}
 
-	public static boolean isNotBlank(String string) {
+	static boolean isNotBlank(String string) {
 		return !isBlank(string);
-	}
-
-	public static void argument(boolean expression, Object errorMessage) {
-		if (!expression) {
-			throw new IllegalArgumentException(String.valueOf(errorMessage));
-		}
 	}
 
 }
