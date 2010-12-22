@@ -34,4 +34,11 @@ public class Check {
 	public static boolean isNotBlank(String string) {
 		return !isBlank(string);
 	}
+
+	public static void argument(boolean expression, Object errorMessage) {
+		if (!expression) {
+			throw new IllegalArgumentException(String.valueOf(errorMessage));
+		}
+	}
+
 }
