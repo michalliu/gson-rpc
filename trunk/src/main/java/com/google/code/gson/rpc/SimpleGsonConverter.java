@@ -12,15 +12,15 @@ import com.google.gson.JsonObject;
  * @author wangzijian
  * 
  */
-public class GsonConverter implements JsonConverter {
+public class SimpleGsonConverter implements JsonConverter {
 
 	private final Gson gson;
 
-	public GsonConverter() {
+	public SimpleGsonConverter() {
 		this(new Gson());
 	}
 
-	public GsonConverter(Gson gson) {
+	public SimpleGsonConverter(Gson gson) {
 		this.gson = Check.notNull(gson, "gson");
 	}
 	

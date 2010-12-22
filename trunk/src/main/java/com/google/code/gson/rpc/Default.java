@@ -11,7 +11,7 @@ class Default {
 
 	static final Charset CHARSET = Charset.forName("UTF-8");
 	
-	static final JsonConverter CONVERTER = new GsonConverter();
+	static final JsonConverter CONVERTER = new SimpleGsonConverter();
 
 	private Default() {
 
