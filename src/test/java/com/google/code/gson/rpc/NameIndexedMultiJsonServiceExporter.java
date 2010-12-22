@@ -7,13 +7,13 @@ import java.util.Map;
  * @author wangzijian
  * 
  */
-public class FindByNameJsonExporter extends JsonExporter {
+public class NameIndexedMultiJsonServiceExporter extends MultiJsonServiceExporter {
 
 	private static final long serialVersionUID = -7246291847524439612L;
 
-	private Map<String, Object> services = new HashMap<String, Object>();
+	private final Map<String, Object> services = new HashMap<String, Object>();
 	
-	public FindByNameJsonExporter() {
+	public NameIndexedMultiJsonServiceExporter() {
 		services.put("mockService", new MockStudentService());
 	}
 	
