@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>1.4</version>
+			<version>1.6</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -86,7 +86,20 @@
      		<name>Gson RPC At Coogle Code Repository</name>  
      		<url>https://gson-rpc.googlecode.com/svn/trunk/deploy</url>  
    		</repository>  
- 	</distributionManagement>  
+ 	</distributionManagement>
+ 	<repositories>
+        <repository>
+            <id>GoogleCodeGson</id>
+            <name>Gson At Coogle Code Repository</name>
+            <url>http://google-gson.googlecode.com/svn/mavenrepo/</url>
+            <snapshots>
+		     	<enabled>false</enabled>
+		   	</snapshots>
+		   	<releases>
+		     	<enabled>true</enabled>
+		   	</releases>
+        </repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
