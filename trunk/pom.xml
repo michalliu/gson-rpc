@@ -5,7 +5,7 @@
 	
 	<groupId>com.google.code.gson</groupId>
 	<artifactId>gson-rpc</artifactId>
-	<version>1.4</version>
+	<version>1.4.1</version>
 	<packaging>jar</packaging>
 	<name>gson rpc</name>
 	<properties>

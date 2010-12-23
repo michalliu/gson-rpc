@@ -21,8 +21,7 @@ public class MalformedRequestPatternException extends RuntimeException {
 	}
 
 	static String messageOf(String requestURI) {
-		return "Cannot determine the invocation from request URI " + requestURI + 
-			", expected invocation pattern: ../service.method";
+		return "Cannot determine the invocation from request URI " + requestURI;
 	}
 
 }

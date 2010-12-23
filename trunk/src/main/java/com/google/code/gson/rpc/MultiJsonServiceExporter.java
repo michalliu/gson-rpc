@@ -49,7 +49,7 @@ public abstract class MultiJsonServiceExporter extends JsonServiceExporter {
 		}
 		return beginIndex;
 	}
-	
+
 	private int parseEndIndex(String requestURI) {
 		return lastIndexOfDot(requestURI);
 	}
