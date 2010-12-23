@@ -18,7 +18,7 @@ import com.google.gson.Gson;
  * @author wangzijian
  * 
  */
-public abstract class ExporterTestSupport {
+public abstract class HttpTestSupport {
 
 	private Server server;
 	

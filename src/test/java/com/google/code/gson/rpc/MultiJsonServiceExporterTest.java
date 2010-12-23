@@ -4,6 +4,10 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static com.google.code.gson.rpc.MalformedRequestPatternException.messageOf;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.webapp.WebAppContext;
@@ -15,7 +19,7 @@ import com.google.gson.JsonPrimitive;
  * @author wangzijian
  * 
  */
-public class MultiJsonServiceExporterTest extends ExporterTestSupport {
+public class MultiJsonServiceExporterTest extends HttpTestSupport {
 
 	private String service = "http://localhost:8090/test/json/services/";
 
@@ -77,4 +81,19 @@ public class MultiJsonServiceExporterTest extends ExporterTestSupport {
 		return context;
 	}
 
+	public static class NameIndexedMultiJsonServiceExporter extends MultiJsonServiceExporter {
+		private static final long serialVersionUID = -7246291847524439612L;
+
+		private final Map<String, Object> services = new HashMap<String, Object>();
+		
+		public NameIndexedMultiJsonServiceExporter() {
+			services.put("mockService", new MockStudentService());
+		}
+		
+		@Override
+		protected Object named(String name) {
+			return services.get(name);
+		}
+
+	}
 }
