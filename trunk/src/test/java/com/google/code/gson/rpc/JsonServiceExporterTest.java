@@ -4,6 +4,8 @@ import static com.google.code.gson.rpc.MalformedRequestPatternException.messageO
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.junit.Test;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.webapp.WebAppContext;
@@ -15,7 +17,7 @@ import com.google.gson.JsonPrimitive;
  * @author wangzijian
  * 
  */
-public class JsonServiceExporterTest extends ExporterTestSupport {
+public class JsonServiceExporterTest extends HttpTestSupport {
 	
 	private String service = "http://localhost:8090/test/json/services/";
 	
@@ -40,4 +42,13 @@ public class JsonServiceExporterTest extends ExporterTestSupport {
 		return context;
 	}
 
+	public static class MockJsonServiceExporter extends JsonServiceExporter {
+		private static final long serialVersionUID = 7625460552552795282L;
+
+		private MockStudentService mockStudentService = new MockStudentService();
+		@Override
+		protected Object getService(HttpServletRequest request) {
+			return mockStudentService;
+		}
+	}
 }
