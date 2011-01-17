@@ -27,13 +27,11 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>1.6</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4jVersion}</version>
-			<scope>provided</scope>
 		</dependency>
 		<!-- optional -->
 		<dependency>
